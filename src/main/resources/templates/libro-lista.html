@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		table, th, td {
+		  border: 3px solid steelblue;
+		  border-collapse: collapse;
+		}
+	</style>
+
+	<title>libro lista</title>
+</head>
+
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>isbn</th>
+				<th>titulo</th>
+                <th>anio</th>
+                <th>alta</th>
+                <th>editorial</th>
+                <th>autor</th>
+				<th>editar </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="libro : ${libro}">
+				<td th:text="${libro.id}"></td>
+				<td th:text="${libro.isbn}"></td>
+				<td th:text="${libro.titulo}"></td>
+                <td th:text="${libro.anio}"></td>
+                <td th:text="${libro.alta}"></td>
+                <td th:text="${libro.editorial.nombre}"></td>
+                <td th:text="${libro.autor.nombre}"></td>
+				<td><a th:href="@{/libro/modificar-libro/(id=${libro.id})}"><input type="button" value="modificar" ></a></td>
+				<td><a th:href="@{/libro/baja-libro/}+ ${libro.id}"><input type="button" value="dar de baja" ></a></td>
+				<td><a th:href="@{/libro/activar-libro/}+${libro.id}"><input type="button" value="dar de alta" ></a></td>
+
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+
+</html>

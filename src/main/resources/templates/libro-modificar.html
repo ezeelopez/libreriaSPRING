@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+	<title>libro modificar</title>
+</head>
+<form th:action="@{/libro/editar-libro}" method="POST">
+ <input type="hidden" name="id" th:value="${libro.id}" /> 
+    <label name="name" for="name">ingrese el nuevo isbn</label><br>
+        <input type="number" placeholder="Ingrese su isbn:" name="isbn" th:value"${libro.isbn}" > <br>
+        <label name="name" for="name"> titulo </label><br>
+        <input type="text" placeholder="Ingrese su titulo:" name="titulo" th:value"${libro.titulo}" ><br>
+        <label name="fecha" for="num">fecha </label><br>
+        <input type="number"  placeholder="ingrese  el año:" name="anio"  th:value"${libro.anio}"> <br>
+
+
+        <label name="name" for="name">elija autor<br>
+       
+            <select  name="autor"> <br>
+            <option th:each="autor: ${autor} " th:text="${autor.nombre}"  th:value="${autor.id}"></option>
+        </select>
+
+       <br>
+    
+    <label name="name" for="name">elija editorial<br>
+    
+    <select id=id name="editorial">
+            <option th:each="editorial: ${editorial} " th:text="${editorial.nombre}" th:value="${editorial.id}"></option>
+        </select>
+
+
+   
+<input type="submit"/>
+
+</form>
+</body>
+</html>

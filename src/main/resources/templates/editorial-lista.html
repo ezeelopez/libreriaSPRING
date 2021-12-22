@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		table, th, td {
+		  border: 3px solid steelblue;
+		  border-collapse: collapse;
+		}
+	</style>
+
+	<title>editorial lista</title>
+</head>
+
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>editoriales</th>
+				<th>alta</th>
+				<th>Editar</th>
+				<th>dar de baja</th>
+				<th>dar de alta</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="edit : ${editorial}">
+				<td th:text="${edit.id}"></td>
+				<td th:text="${edit.nombre}"></td>
+				<td th:text="${edit.alta}"></td>
+				<td><a th:href="@{/editorial/modificar-editorial(id=${edit.id})}"><input type="button" value="modificar" ></a></td>
+				<td><a th:href="@{/editorial/baja-editorial/}+ ${edit.id}"><input type="button" value="dar de baja" ></a></td>
+				<td><a th:href="@{/editorial/activar-editorial/}+${edit.id}"><input type="button" value="dar de alta" ></a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+
+</html>
